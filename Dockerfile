@@ -6,7 +6,8 @@ RUN DEBIAN_FRONTEND=noninteractive ;\
 apt-get update && \
 apt-get install --assume-yes \
 	nginx \
-	php5-fpm
+	php5-fpm \
+	ntp
 
 # ADD PHP-FPM Configuration
 ADD ./php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
