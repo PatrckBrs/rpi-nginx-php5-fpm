@@ -10,19 +10,16 @@ apt-get install --assume-yes \
 	ntp
 
 # ADD PHP-FPM Configuration
-ADD ./php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
+ADD ./nginx/conf.d/php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
 
 # ADD index.php info
 ADD ./index.php /var/www/html/index.php
-
-# COPY nginx.conf 
-COPY nginx/config/nginx.conf /etc/nginx/nginx.conf
 
 # Turn off daemon mode
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 
 RUN sed -i -e 's/listen \= 127.0.0.1\:9000/listen \= \/var\/run\/php5-fpm.sock/' /etc/php5/fpm/pool.d/www.conf
-RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf
+#RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf
 
 RUN echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.debian./.fr./g' /etc/ntp.conf
 
