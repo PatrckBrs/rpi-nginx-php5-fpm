@@ -16,7 +16,7 @@ ADD ./nginx/conf.d/php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
 ADD ./nginx/sites-available/default /etc/nginx/sites-available/default
 
 # ADD index.php info
-ADD ./index.php /var/www/html/index.php
+ADD ./phpinfo.php /var/www/html/phpinfo.php
 
 # Turn off daemon mode
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
