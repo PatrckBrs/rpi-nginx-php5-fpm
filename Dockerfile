@@ -5,18 +5,26 @@ FROM resin/rpi-raspbian:jessie
 RUN DEBIAN_FRONTEND=noninteractive ;\
 apt-get update && \
 apt-get install --assume-yes \
-	nginx \
-	php5-fpm \
-	ntp
+    nginx \
+    php5-fpm \
+    php5 \
+    php5-json \
+    php5-gd \
+    php5-sqlite \
+    php5-curl \
+    php5-common \
+    php-xml-parser \
+    php-apc \
+    ntp
 
-# ADD PHP-FPM Configuration
-ADD ./nginx/conf.d/php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
+# COPY PHP-FPM Configuration
+COPY ./nginx/conf.d/php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
 
-# ADD nginx/sites-available/default
-ADD ./nginx/sites-available/default /etc/nginx/sites-available/default
+# COPY nginx/sites-available/default
+COPY ./nginx/sites-available/default /etc/nginx/sites-available/default
 
-# ADD index.php info
-ADD ./phpinfo.php /var/www/html/phpinfo.php
+# COPY index.php info
+COPY ./phpinfo.php /var/www/html/phpinfo.php
 
 # Turn off daemon mode
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
