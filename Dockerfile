@@ -6,7 +6,7 @@ RUN DEBIAN_FRONTEND=noninteractive ;\
 apt-get update && \
 apt-get install --assume-yes \
     nginx \
-	ntp \
+    ntp \
     php5-fpm \
     php5 \
     php5-json \
@@ -16,7 +16,7 @@ apt-get install --assume-yes \
     php5-common \
     php-xml-parser \
     php-apc \
-	supervisor
+    supervisor
     
 # COPY PHP-FPM Configuration
 COPY ./nginx/conf.d/php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
