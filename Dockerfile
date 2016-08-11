@@ -16,7 +16,8 @@ apt-get install --assume-yes \
     php5-common \
     php-xml-parser \
     php-apc \
-    supervisor
+    supervisor && \
+    rm -rf /var/lib/apt/lists/*
     
 # COPY PHP-FPM Configuration
 COPY ./nginx/conf.d/php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
