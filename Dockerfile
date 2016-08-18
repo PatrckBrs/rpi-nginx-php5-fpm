@@ -1,14 +1,11 @@
 # Dockerfile Raspberry Pi Nginx
 FROM resin/rpi-raspbian:latest
 
-MAINTAINER Patrick Brs 
-
 # Update sources && install packages
 RUN DEBIAN_FRONTEND=noninteractive ;\
 apt-get update && \
 apt-get install --assume-yes \
     nginx \
-    ntp \
     php5-fpm \
     php5 \
     php5-json \
@@ -18,9 +15,8 @@ apt-get install --assume-yes \
     php5-common \
     php-xml-parser \
     php-apc \
-    supervisor && \
-    rm -rf /var/lib/apt/lists/*
-    
+    ntp
+
 # COPY PHP-FPM Configuration
 COPY ./nginx/conf.d/php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
 
@@ -39,10 +35,6 @@ sed -i -e "s/;env/env/g" /etc/php5/fpm/pool.d/www.conf
 
 RUN echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.debian./.fr./g' /etc/ntp.conf
 
-# Configuration supervisord
-RUN mkdir -p /var/log/supervisor
-COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
 # Volume
 VOLUME ["/etc/nginx", "/etc/nginx/conf.d", "/var/www/html"]
 
@@ -53,4 +45,4 @@ WORKDIR /var/www/html
 EXPOSE 80 443
 
 # Boot up Nginx, and PHP5-FPM when container is started
-CMD ["/usr/bin/supervisord"]
+CMD service php5-fpm start && nginx
