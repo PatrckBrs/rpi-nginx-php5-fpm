@@ -30,7 +30,7 @@ COPY ./etc/supervisord.conf /etc/
 COPY ./etc/supervisor.d/agent.ini /etc/supervisor.d/
 
 # Turn off daemon mode
-RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
+#RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 
 #RUN sed -i -e "s/listen \= 127.0.0.1\:9000/listen \= \/var\/run\/php5-fpm.sock/" /etc/php5/fpm/pool.d/www.conf && \
 #sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf && \
