@@ -8,9 +8,10 @@ RUN apk update && \
 	php \
     	php-json \
     	php-gd \
-    	php-sqlite \
+    	php-sqlite3 \
     	php-common \
-    	php-xml-parser \
+    	php-xml \
+    	php-apcu \
 	supervisor
 	
 RUN mkdir /data /etc/nginx/sites-available /etc/nginx/sites-enabled /var/www/html
