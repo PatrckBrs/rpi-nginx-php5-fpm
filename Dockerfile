@@ -3,8 +3,8 @@ FROM hypriot/rpi-alpine-scratch
 
 RUN apk update && \
 	apk add nginx \
-	php5-fpm \
-	php5-curl \
+	php-fpm \
+	php-curl \
 	supervisor
 	
 RUN mkdir /data /etc/nginx/sites-available /etc/nginx/sites-enabled /var/www/html
