@@ -5,6 +5,12 @@ RUN apk update && \
 	apk add nginx \
 	php-fpm \
 	php-curl \
+	php \
+    	php-json \
+    	php-gd \
+    	php-sqlite \
+    	php-common \
+    	php-xml-parser \
 	supervisor
 	
 RUN mkdir /data /etc/nginx/sites-available /etc/nginx/sites-enabled /var/www/html
