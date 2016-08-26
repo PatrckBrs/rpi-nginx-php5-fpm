@@ -5,14 +5,6 @@ RUN apk update && \
 	apk add nginx \
 	php5-fpm \
 	php5-curl \
-	php5 \
-	php5-json \
-	php5-sqlite \
-    	php5-curl \
-    	php5-common \
-    	php-xml-parser \
-    	php-apc \
-    	ntp \
 	supervisor
 	
 RUN mkdir /data /etc/nginx/sites-available /etc/nginx/sites-enabled /var/www/html
