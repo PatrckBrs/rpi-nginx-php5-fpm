@@ -22,7 +22,7 @@ COPY ./nginx/conf.d/php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
 # COPY nginx/sites-available/default
 COPY ./nginx/sites-available/default /etc/nginx/sites-available/default
 
-RUN ln -s /etc/nginx/sites-availables/default /etc/nginx/sites-enabled/default
+RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # COPY index.php info
 COPY ./phpinfo.php /var/www/html/phpinfo.php
