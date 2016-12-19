@@ -35,4 +35,5 @@ COPY ./etc/supervisor.d/agent.ini /etc/supervisor.d/
 EXPOSE 80 443
 
 # Boot up Nginx, and PHP5-FPM when container is started
-CMD /usr/bin/supervisord --nodaemon --configuration /etc/supervisord.conf  
+#CMD /usr/bin/supervisord --nodaemon --configuration /etc/supervisord.conf  
+CMD [/bin/bash]
